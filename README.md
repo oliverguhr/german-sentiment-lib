@@ -50,7 +50,7 @@ If you are interested in code and data that was used to train this model please 
 
 ## Cite
 
-For feedback and questions contact me via mail or Twitter [@oliverguhr](https://twitter.com/oliverguhr). Please cite us if you found this useful:
+For feedback and questions contact me via e-mail or Twitter [@oliverguhr](https://twitter.com/oliverguhr). Please cite us if you found this useful:
 
 ```
 @InProceedings{guhr-EtAl:2020:LREC,
