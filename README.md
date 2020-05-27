@@ -62,7 +62,7 @@ For feedback and questions contact me via e-mail or Twitter [@oliverguhr](https:
   address        = {Marseille, France},
   publisher      = {European Language Resources Association},
   pages     = {1620--1625},
-  url       = {https://www.aclweb.org/anthology/2020.lrec-1.201}
+  url       = {https://www.aclweb.org/anthology/2020.lrec-1.202}
 }
 ```
 
