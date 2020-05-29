@@ -1,6 +1,6 @@
 # German Sentiment Classification with Bert
 
-This package provides a very simple interface to [detect the sentiment](https://de.wikipedia.org/wiki/Sentiment_Detection) of German texts. It uses the Googles Bert architecture trained on 1.834 million samples. The training data contains texts from various domains like Twitter, Facebook and movie, app and hotel reviews. You can find more information about the dataset and the training process in the [paper](http://www.lrec-conf.org/proceedings/lrec2020/pdf/2020.lrec-1.202.pdf).
+This package provides a very simple interface to [detect the sentiment](https://de.wikipedia.org/wiki/Sentiment_Detection) of German texts. It uses the Googles Bert architecture trained on 1.834 million samples. The training data contains texts from various domains like Twitter, Facebook and movie, app and hotel reviews. You can find more information about the dataset and the training process in the [paper](https://www.aclweb.org/anthology/2020.lrec-1.202.pdf).
 
 ## Install 
 
@@ -62,7 +62,7 @@ For feedback and questions contact me via e-mail or Twitter [@oliverguhr](https:
   address        = {Marseille, France},
   publisher      = {European Language Resources Association},
   pages     = {1620--1625},
-  url       = {https://www.aclweb.org/anthology/2020.lrec-1.202}
+  url       = {https://www.aclweb.org/anthology/2020.lrec-1.202.pdf}
 }
 ```
 

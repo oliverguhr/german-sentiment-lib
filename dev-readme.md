@@ -10,3 +10,9 @@ pip3 install -e ./
 ```
 python3 setup.py sdist bdist_wheel
 ```
+
+## upload package
+
+```
+python3 -m twine upload dist/* --verbose
+```
