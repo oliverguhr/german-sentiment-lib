@@ -16,3 +16,9 @@ python3 setup.py sdist bdist_wheel
 ```
 python3 -m twine upload dist/* --verbose
 ```
+
+## run unittests 
+
+```
+python3 -m pytest tests/test.py
+```
