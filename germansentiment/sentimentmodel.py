@@ -8,7 +8,8 @@ class SentimentModel():
         if torch.cuda.is_available():
             self.device = 'cuda'
         else:
-            self.device = 'cpu'
+            self.device = 'cpu'        
+            
         self.model = AutoModelForSequenceClassification.from_pretrained(model_name)
         self.model = self.model.to(self.device)
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)

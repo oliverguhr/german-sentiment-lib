@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="germansentiment",
-    version="1.0.4",
+    version="1.0.5",
     author="Oliver Guhr",
     author_email="oliver.guhr@htw-dresden.de",
     description="A python package for german language sentiment classification.",
@@ -20,7 +20,7 @@ setuptools.setup(
     ],
     install_requires=[
        "transformers",
-       "torch",
+       "torch>=1.8.1",
     ],
     python_requires='>=3.6',
 )
