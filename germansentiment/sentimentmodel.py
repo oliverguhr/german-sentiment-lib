@@ -5,7 +5,12 @@ import re
 
 class SentimentModel():
     def __init__(self, model_name: str = "oliverguhr/german-sentiment-bert"):
+        if torch.cuda.is_available():
+            self.device = 'cuda'
+        else:
+            self.device = 'cpu'
         self.model = AutoModelForSequenceClassification.from_pretrained(model_name)
+        self.model = self.model.to(self.device)
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
 
         self.clean_chars = re.compile(r'[^A-Za-züöäÖÜÄß ]', re.MULTILINE)
@@ -17,6 +22,7 @@ class SentimentModel():
         # Add special tokens takes care of adding [CLS], [SEP], <s>... tokens in the right way for each model.
         input_ids = self.tokenizer.batch_encode_plus(texts,padding=True, add_special_tokens=True)
         input_ids = torch.tensor(input_ids["input_ids"])
+        input_ids = input_ids.to(self.device)
 
         with torch.no_grad():
             logits = self.model(input_ids)    
