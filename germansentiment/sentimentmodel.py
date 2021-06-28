@@ -22,7 +22,7 @@ class SentimentModel():
         texts = [self.clean_text(text) for text in texts]
         # Add special tokens takes care of adding [CLS], [SEP], <s>... tokens in the right way for each model.
         # limit number of tokens to model's limitations (512)
-        input_ids = self.tokenizer.batch_encode_plus(texts,padding=True, add_special_tokens=True,truncation=True,max_length=512)
+        input_ids = self.tokenizer.batch_encode_plus(texts,padding=True, add_special_tokens=True,truncation=True)
         input_ids = torch.tensor(input_ids["input_ids"])
         input_ids = input_ids.to(self.device)
 

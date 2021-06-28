@@ -20,3 +20,11 @@ def test_single_document_classification():
     result = model.predict_sentiment(text)
     expected = ["negative"]
     assert result == expected
+
+
+def test_long_document_classification():
+    text = ["Mit keinem guten Ergebniss" * 100]
+        
+    result = model.predict_sentiment(text)
+    expected = ["negative"]
+    assert result == expected
