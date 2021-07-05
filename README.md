@@ -1,3 +1,5 @@
+[![Downloads](https://pepy.tech/badge/germansentiment)](https://pepy.tech/project/germansentiment)
+
 # German Sentiment Classification with Bert
 
 This package provides a very simple interface to [detect the sentiment](https://de.wikipedia.org/wiki/Sentiment_Detection) of German texts. It uses the Googles Bert architecture trained on 1.834 million samples. The training data contains texts from various domains like Twitter, Facebook and movie, app and hotel reviews. You can find more information about the dataset and the training process in the [paper](https://www.aclweb.org/anthology/2020.lrec-1.202.pdf).
