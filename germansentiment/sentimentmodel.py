@@ -21,18 +21,15 @@ class SentimentModel():
     def predict_sentiment(self, texts: List[str])-> List[str]:
         texts = [self.clean_text(text) for text in texts]
         # Add special tokens takes care of adding [CLS], [SEP], <s>... tokens in the right way for each model.
-        # limit number of tokens to model's limitations (512)
-        input_ids = self.tokenizer.batch_encode_plus(texts,padding=True, add_special_tokens=True,truncation=True)
-        input_ids = torch.tensor(input_ids["input_ids"])
-        input_ids = input_ids.to(self.device)
-
+        # truncation=True limits number of tokens to model's limitations (512)
+        encoded = self.tokenizer.batch_encode_plus(texts,padding=True, add_special_tokens=True,truncation=True, return_tensors="pt")
+        encoded = encoded.to(self.device)
         with torch.no_grad():
-            logits = self.model(input_ids)    
-
+                logits = self.model(**encoded)
+        
         label_ids = torch.argmax(logits[0], axis=1)
+        return [self.model.config.id2label[label_id.item()] for label_id in label_ids]
 
-        labels = [self.model.config.id2label[label_id] for label_id in label_ids.tolist()]
-        return labels
 
     def replace_numbers(self,text: str) -> str:
             return text.replace("0"," null").replace("1"," eins").replace("2"," zwei")\

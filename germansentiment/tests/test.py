@@ -1,4 +1,4 @@
-from germansentiment import SentimentModel
+from sentimentmodel import SentimentModel
 import pytest
 
 
