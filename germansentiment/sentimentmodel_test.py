@@ -1,4 +1,4 @@
-from sentimentmodel import SentimentModel
+from .sentimentmodel import SentimentModel
 import pytest
 
 
@@ -20,6 +20,21 @@ def test_single_document_classification():
     result = model.predict_sentiment(text)
     expected = ["negative"]
     assert result == expected
+
+def test_output_class_probabilities():
+    text = ["das ist super"]
+        
+    result, probabilities = model.predict_sentiment(text, output_probabilities = True)    
+    assert result == ["positive"]
+    assert len(probabilities[0]) == 3    
+
+def test_output_multitiple_class_probabilities():
+    text = ["Mit keinem guten Ergebniss", "Das ist toll"]
+        
+    result, probabilities = model.predict_sentiment(text, output_probabilities = True)    
+    assert result == ["negative", "positive"]
+    assert len(probabilities) == 2
+    assert len(probabilities[0]) == 3    
 
 
 def test_long_document_classification():

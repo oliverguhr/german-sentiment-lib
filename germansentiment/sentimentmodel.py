@@ -18,7 +18,7 @@ class SentimentModel():
         self.clean_http_urls = re.compile(r'https*\S+', re.MULTILINE)
         self.clean_at_mentions = re.compile(r'@\S+', re.MULTILINE)
 
-    def predict_sentiment(self, texts: List[str])-> List[str]:
+    def predict_sentiment(self, texts: List[str], output_probabilities = False)-> List[str]:
         texts = [self.clean_text(text) for text in texts]
         # Add special tokens takes care of adding [CLS], [SEP], <s>... tokens in the right way for each model.
         # truncation=True limits number of tokens to model's limitations (512)
@@ -28,8 +28,16 @@ class SentimentModel():
                 logits = self.model(**encoded)
         
         label_ids = torch.argmax(logits[0], axis=1)
-        return [self.model.config.id2label[label_id.item()] for label_id in label_ids]
 
+        if output_probabilities == False:
+            return [self.model.config.id2label[label_id.item()] for label_id in label_ids]
+        else:
+            predictions = torch.softmax(logits[0], dim=-1).tolist()  
+            probabilities = []
+            for prediction in predictions:
+                probabilities += [[[self.model.config.id2label[index], item] for index, item in enumerate(prediction)]]
+                
+            return [self.model.config.id2label[label_id.item()] for label_id in label_ids], probabilities
 
     def replace_numbers(self,text: str) -> str:
             return text.replace("0"," null").replace("1"," eins").replace("2"," zwei")\

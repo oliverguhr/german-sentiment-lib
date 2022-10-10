@@ -34,6 +34,20 @@ The code above will output following list:
 ["negative","negative","positive","positive","neutral", "neutral"]
 ```
 
+### Output class probabilities
+
+```python
+from germansentiment import SentimentModel
+
+model = SentimentModel()
+
+classes, probabilities = model.predict_sentiment(["das ist super"], output_probabilities = True) 
+print(classes, probabilities)
+```
+```python
+['positive'] [[['positive', 0.9761366844177246], ['negative', 0.023540444672107697], ['neutral', 0.00032294404809363186]]]
+```
+
 ## Results
 
 If you are interested in code and data that was used to train this model please have a look at [this repository](https://github.com/oliverguhr/german-sentiment) and our [paper](http://www.lrec-conf.org/proceedings/lrec2020/pdf/2020.lrec-1.201.pdf). Here is a table of the F1 scores that his model achieves on following datasets. Since we trained this model on a newer version of the transformer library, the results are slightly better than reported in the paper.
