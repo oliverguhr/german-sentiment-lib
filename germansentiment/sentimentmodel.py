@@ -22,7 +22,7 @@ class SentimentModel():
         texts = [self.clean_text(text) for text in texts]
         # Add special tokens takes care of adding [CLS], [SEP], <s>... tokens in the right way for each model.
         # truncation=True limits number of tokens to model's limitations (512)
-        encoded = self.tokenizer.batch_encode_plus(texts,padding=True, add_special_tokens=True,truncation=True, return_tensors="pt")
+        encoded = self.tokenizer(texts,padding=True, add_special_tokens=True,truncation=True, return_tensors="pt")
         encoded = encoded.to(self.device)
         with torch.no_grad():
                 logits = self.model(**encoded)
